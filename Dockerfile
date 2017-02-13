@@ -2,8 +2,8 @@ FROM centos
 
 MAINTAINER Tony Diep
 
-RUN yum update
-RUN yum install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness
+RUN yum update -y
+RUN yum -y install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness
 
 
 
