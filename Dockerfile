@@ -71,6 +71,19 @@ RUN adduser --system \
 # configure couchdb
 #RUN sed -i "s/;port/port/" /usr/local/lib/couchdb/local.ini ; sed -i "s/;bind_address = 127.0.0.1/bind_address = 0.0.0.0/" /usr/local/lib/couchdb/local.ini
 
+#RUN yum -y install firewalld
+
+
 EXPOSE  5984
+#RUN firewall-cmd --zone=public --add-port=5984/tcp --permanent
+#RUN firewall-cmd --reload
+
+#RUN systemctl stop firewalld
+
+# CouchDB seems to be listening on 5986 due to some error
+
+#EXPOSE  5986
+#RUN /usr/bin/firewall-cmd --zone=public --add-port=5986/tcp --permanent
+#RUN /usr/bin/firewall-cmd --reload
 
 CMD ["/bin/bash", "-e", "/usr/local/lib/couchdb/bin/couchdb", "start"]
